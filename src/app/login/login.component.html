@@ -1,0 +1,45 @@
+<app-header [isLoggedIn]="isLoggedIn"></app-header>
+<div class="signup-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="text-center">Login</span>
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="form" (ngSubmit)="doLogin(form.value)">
+            <div class="form-group" [class.has-error]="!form.controls['email'].valid && (form.controls['email'].touched || form.controls['email'].dirty) || (errors && errors.errors.email)">
+              <label for="email">Email</label>
+              <input class="form-control" type="text" name="email" id="email" placeholder="Email" [formControl]="form.controls['email']">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <small class="help-block" *ngIf="form.controls['email'].hasError('required') && (form.controls['email'].touched || form.controls['email'].dirty)">Email is required.</small>
+                  <small class="help-block" *ngIf="form.controls['email'].hasError('email') && (form.controls['email'].touched || form.controls['email'].dirty) && (form.controls['email'].value)">Invalid email.</small>
+                  <small class="help-block" *ngIf="errors && errors.errors.email">{{ errors.errors.email.msg }}</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" [class.has-error]="!form.controls['password'].valid && (form.controls['password'].touched || form.controls['password'].dirty) || (errors && errors.errors.password)">
+              <label for="password">Password</label>
+              <input class="form-control" type="password" name="password" id="password" [formControl]="form.controls['password']" placeholder="Password">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <small class="help-block" *ngIf="form.controls['password'].hasError('required') && (form.controls['password'].touched || form.controls['password'].dirty)">Password is required.</small>
+                  <small class="help-block" *ngIf="form.controls['password'].hasError('minlength')">Password must be 6 character long.</small>
+                  <small class="help-block" *ngIf="errors && errors.errors.password">{{ errors.errors.password.msg }}</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" [disabled]="!form.valid" class="btn btn-primary form-control">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar {
+  border-radius: 0;
+}
+
+.signup-container {
+  width: 40%;
+  margin: 180px auto;
+}
+
+.panel-heading {
+  text-align: center;
+}
+
+.form-control[disabled] {
+  background-color: #337ab7;
+  opacity: 0.5;
+}
