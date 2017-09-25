@@ -11,16 +11,19 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './_services/auth/auth.service';
+import { PostService } from './post/service/post.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardGuard } from './_guard/auth-guard.guard';
 import { TokenInterceptor } from './_interceptor/token-interceptor';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardGuard] }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardGuard] },
+  { path: 'post', component: PostComponent, canActivate: [AuthGuardGuard] }
 ];
 
 const BASE_URL = 'http://localhost:3000/api/v1';
@@ -32,7 +35,8 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     { provide: 'BASE_URL', useValue: BASE_URL},
     AuthService,
     AuthGuardGuard,
+    PostService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
