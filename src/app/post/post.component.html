@@ -1,1 +1,44 @@
 <app-header [isLoggedIn]="isLoggedIn"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Title</th>
+            <th class="text-center">Text</th>
+            <th class="text-center">Slug</th>
+            <th class="text-center">CreatedAt</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="posts.length > 0 else noData">
+          <tr *ngFor="let post of posts; let id = index">
+            <td class="text-center">{{ id }}</td>
+            <td class="text-center">{{ post.title }}</td>
+            <td class="text-center">{{ post.text }}</td>
+            <td class="text-center">{{ post.slug }}</td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+          </tr>
+        </tbody>
+
+        <ng-template id="noData">
+          <tbody>
+            <tr>
+              <td colspan="6" class="text-center">No Data Available.</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+    </div>
+  </div>
+</div>

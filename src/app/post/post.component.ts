@@ -10,7 +10,7 @@ import { PostService } from './service/post.service';
 })
 export class PostComponent implements OnInit {
   isLoggedIn: boolean;
-  posts: any[];
+  posts: any[] = [];
   constructor(private authService: AuthService, private postSerivce: PostService) { }
 
   ngOnInit() {
