@@ -1,0 +1,20 @@
+<app-header [isLoggedIn]="isLoggedIn"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Adding New Post
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="form">
+            <div class="form-group" [class.has-error]="!form.valid && (form.controls['title'].touched || form.controls['title'].ditry)">
+              <label for="title" class="control-label">Title</label>
+              <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

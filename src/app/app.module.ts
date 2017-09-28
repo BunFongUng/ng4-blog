@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardGuard } from './_guard/auth-guard.guard';
 import { TokenInterceptor } from './_interceptor/token-interceptor';
 import { PostComponent } from './post/post.component';
+import { PostFormComponent } from './post-form/post-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardGuard] },
-  { path: 'post', component: PostComponent, canActivate: [AuthGuardGuard] }
+  { path: 'post', component: PostComponent, canActivate: [AuthGuardGuard] },
+  { path: 'post/create', component: PostFormComponent, canActivate: [ AuthGuardGuard ] },
 ];
 
 const BASE_URL = 'http://localhost:3000/api/v1';
@@ -36,7 +38,8 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     SignupComponent,
     HomeComponent,
     DashboardComponent,
-    PostComponent
+    PostComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
