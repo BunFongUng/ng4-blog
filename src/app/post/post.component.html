@@ -23,7 +23,7 @@
         </thead>
         <tbody *ngIf="posts.length > 0; else noData">
           <tr *ngFor="let post of posts; let id = index">
-            <td class="text-center">{{ id }}</td>
+            <td class="text-center">{{ id + 1 }}</td>
             <td class="text-center">{{ post.title }}</td>
             <td class="text-center">{{ post.text }}</td>
             <td class="text-center">{{ post.slug }}</td>

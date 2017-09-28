@@ -17,6 +17,8 @@ import { AuthGuardGuard } from './_guard/auth-guard.guard';
 import { TokenInterceptor } from './_interceptor/token-interceptor';
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './_services/alert/alert.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -39,7 +41,8 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     HomeComponent,
     DashboardComponent,
     PostComponent,
-    PostFormComponent
+    PostFormComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -49,11 +52,12 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     HttpClientModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: 'BASE_URL', useValue: BASE_URL},
     AuthService,
     AuthGuardGuard,
     PostService,
+    AlertComponent,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: 'BASE_URL', useValue: BASE_URL},
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

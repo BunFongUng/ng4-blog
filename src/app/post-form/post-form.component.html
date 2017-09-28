@@ -7,11 +7,34 @@
           Adding New Post
         </div>
         <div class="panel-body">
-          <form [formGroup]="form">
-            <div class="form-group" [class.has-error]="!form.valid && (form.controls['title'].touched || form.controls['title'].ditry)">
+          <form [formGroup]="form" (ngSubmit)="createPost(form.value)">
+
+            <div class="form-group" [class.has-error]="!form.controls['title'].valid && (form.controls['title'].touched || form.controls['title'].dirty)">
               <label for="title" class="control-label">Title</label>
-              <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+              <input type="text" name="title" id="title" [formControl]="form.controls['title']" class="form-control" placeholder="Title">
+              <div class="row">
+                <div class="col-md-12">
+                  <small class="help-block" *ngIf="form.controls['title'].hasError('required') && (form.controls['title'].touched)">Title is required.</small>
+                  <small class="help-block" *ngIf="form.controls['title'].hasError('minlength')">Title must be 3 character long.</small>
+                </div>
+              </div>
             </div>
+
+            <div class="form-group" [class.has-error]="!form.controls['text'].valid && (form.controls['text'].touched || form.controls['text'].dirty)">
+              <label for="text" class="control-label">Text</label>
+              <textarea name="text" id="text" [formControl]="form.controls['text']" class="form-control" placeholder="Text"></textarea>
+              <div class="row">
+                <div class="col-md-12">
+                  <small class="help-block" *ngIf="form.controls['text'].hasError('required') && (form.controls['text'].touched)">Text is required.</small>
+                  <small class="help-block" *ngIf="form.controls['text'].hasError('minlength')">Text must be 10 character long.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary form-control" [disabled]="!form.valid">Submit</button>
+            </div>
+
           </form>
         </div>
       </div>
