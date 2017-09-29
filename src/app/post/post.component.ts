@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
   public list() {
     this.postSerivce.list().subscribe((data: any) => {
       this.posts = data.data;
-      console.log(this.posts);
+      // console.log(this.posts);
       // this.posts = posts.dat
     });
   }

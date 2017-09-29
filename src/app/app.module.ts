@@ -55,7 +55,7 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     AuthService,
     AuthGuardGuard,
     PostService,
-    AlertComponent,
+    AlertService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: 'BASE_URL', useValue: BASE_URL},
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
