@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -49,6 +50,7 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    NgbModule.forRoot(),
     HttpClientModule,
   ],
   providers: [

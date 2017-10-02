@@ -13,8 +13,7 @@ import { AlertService } from '../_services/alert/alert.service';
 export class PostFormComponent implements OnInit {
   isLoggedIn: boolean;
   form: FormGroup;
-  showSuccessMessage: boolean;
-  showErrorMessage: boolean;
+  errors: any;
 
   constructor(private authService: AuthService, private fb: FormBuilder,
               private postService: PostService, private alertService: AlertService,
@@ -46,7 +45,8 @@ export class PostFormComponent implements OnInit {
         this.alertService.error('Could not create post.');
       }
     }, (err: any) => {
-      this.alertService.error('Could not create post.');
+      this.errors = JSON.parse(err.error);
+      this.alertService.error(this.errors.errors.title.msg);
     });
   }
 }
