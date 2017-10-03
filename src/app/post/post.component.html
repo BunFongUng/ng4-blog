@@ -28,7 +28,9 @@
             <td class="text-center">{{ post.text }}</td>
             <td class="text-center">{{ post.slug }}</td>
             <td class="text-center"></td>
-            <td class="text-center"></td>
+            <td class="text-center">
+              <a (click)="deletePost(post._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
           </tr>
         </tbody>
 
