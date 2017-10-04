@@ -12,6 +12,9 @@ import { AlertService } from '../_services/alert/alert.service';
 export class PostComponent implements OnInit {
   isLoggedIn: boolean;
   posts: any[] = [];
+  page: number = 1;
+  limit: number = 10;
+  offset: number;
   constructor(private authService: AuthService, private postSerivce: PostService, private alertService: AlertService) { }
 
   ngOnInit() {
@@ -20,6 +23,7 @@ export class PostComponent implements OnInit {
   }
 
   public list(): void {
+    this.offset = (this.page - 1) * this.limit;
     this.postSerivce.list().subscribe((data: any) => {
       if (data.status === 'success') {
         this.posts = data.data;
