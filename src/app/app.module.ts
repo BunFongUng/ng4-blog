@@ -20,6 +20,7 @@ import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './_services/alert/alert.service';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,7 +44,8 @@ const BASE_URL = 'http://localhost:3000/api/v1';
     DashboardComponent,
     PostComponent,
     PostFormComponent,
-    AlertComponent
+    AlertComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
