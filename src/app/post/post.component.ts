@@ -14,6 +14,8 @@ export class PostComponent implements OnInit {
   posts: any[] = [];
   page: number = 1;
   limit: number = 10;
+  total: number = 0;
+  loading: boolean = false;
   offset: number;
   constructor(private authService: AuthService, private postSerivce: PostService, private alertService: AlertService) { }
 
