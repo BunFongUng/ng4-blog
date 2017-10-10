@@ -49,7 +49,7 @@ export class PaginationComponent implements OnInit {
   }
 
   public lastPage(): boolean {
-    return this.perPage * this.page > this.count;
+    return this.perPage * this.page >= this.count;
   }
 
   public getPages(): number[] {
@@ -57,12 +57,10 @@ export class PaginationComponent implements OnInit {
     const p = this.page || 1;
     const pagesToShow = this.pagesToShow || 9;
     const pages: number[] = [];
-
     pages.push(p);
 
     const times = pagesToShow - 1;
-
-    for (let i = times; i < times; i++) {
+    for (let i = 0; i < times; i++) {
       if (pages.length < pagesToShow) {
         if (Math.min.apply(null, pages) > 1) {
           pages.push(Math.min.apply(null, pages) - 1);

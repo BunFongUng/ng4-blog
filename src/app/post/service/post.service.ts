@@ -7,7 +7,6 @@ export class PostService {
   constructor(@Inject('BASE_URL') private API_URL: string, private http: HttpClient) { }
 
   public list(params: { skip: number, limit: number }): Observable<any> {
-    console.log('111', params);
     let query = `skip=${params.skip}&limit=${params.limit}`;
     return this.http.get(`${this.API_URL}/post?${query}`);
   }

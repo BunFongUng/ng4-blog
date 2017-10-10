@@ -13,7 +13,7 @@ export class PostComponent implements OnInit {
   isLoggedIn: boolean;
   posts: any[] = [];
   page: number = 1;
-  limit: number = 5;
+  limit: number = 1;
   total: number = 0;
   loading: boolean = false;
   offset: number;
@@ -65,6 +65,7 @@ export class PostComponent implements OnInit {
   }
 
   goToPage(n: number): void {
+    console.log(n);
     this.page = n;
     this.list();
   }

@@ -49,9 +49,9 @@
         [perPage]="limit"
         [pagesToShow]="5"
         [loading]="loading"
-        (onPrev)="prevPage()"
-        (onNext)="nextPage()"
-        (onPage)="goToPage($event)"></app-pagination>
+        (goPrev)="prevPage()"
+        (goNext)="nextPage()"
+        (goPage)="goToPage($event)"></app-pagination>
     </div>
   </div>
 </div>
