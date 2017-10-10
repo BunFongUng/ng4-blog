@@ -13,7 +13,7 @@ export class PostComponent implements OnInit {
   isLoggedIn: boolean;
   posts: any[] = [];
   page: number = 1;
-  limit: number = 10;
+  limit: number = 5;
   total: number = 0;
   loading: boolean = false;
   offset: number;
@@ -26,7 +26,8 @@ export class PostComponent implements OnInit {
 
   public list(): void {
     this.offset = (this.page - 1) * this.limit;
-    this.postSerivce.list().subscribe((data: any) => {
+
+    this.postSerivce.list({ skip: this.offset, limit: this.limit }).subscribe((data: any) => {
       if (data.status === 'success') {
         this.posts = data.data;
       } else {
