@@ -17,6 +17,7 @@ export class PostComponent implements OnInit {
   total: number = 0;
   loading: boolean = false;
   offset: number;
+
   constructor(private authService: AuthService, private postSerivce: PostService, private alertService: AlertService) { }
 
   ngOnInit() {
@@ -24,12 +25,13 @@ export class PostComponent implements OnInit {
     this.list();
   }
 
-  public list(): void {
+  list(): void {
     this.offset = (this.page - 1) * this.limit;
 
     this.postSerivce.list({ skip: this.offset, limit: this.limit }).subscribe((data: any) => {
       if (data.status === 'success') {
         this.posts = data.data;
+        this.total = data.total;
       } else {
         this.posts = [];
       }
@@ -38,7 +40,7 @@ export class PostComponent implements OnInit {
     });
   }
 
-  public deletePost(postId: string): boolean {
+  deletePost(postId: string): boolean {
     this.postSerivce.deletePost(postId).subscribe((data: any) => {
       if (data.status === 'success') {
         this.alertService.success('Successfully deleted.');
@@ -50,5 +52,20 @@ export class PostComponent implements OnInit {
 
     });
     return false;
+  }
+
+  nextPage(): void {
+    this.page++;
+    this.list();
+  }
+
+  prevPage(): void {
+    this.page--;
+    this.list();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    this.list();
   }
 }
