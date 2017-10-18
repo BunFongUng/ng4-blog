@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   public doLogin(formData): void {
-    console.log('Hello');
     this.authService.login(formData.email, formData.password).subscribe((data: any) => {
-      console.log('data', data);
       if (data.token) {
         this.authService.setUserToken(data.token);
         this.router.navigate(['/dashboard']);
